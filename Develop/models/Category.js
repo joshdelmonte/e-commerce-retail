@@ -8,13 +8,9 @@ Category.init(
   {
     // define columns
     // * `id`
-
     // * Integer.
-  
     // * Doesn't allow null values.
-  
     // * Set as primary key.
-  
     // * Uses auto increment.
     id:{ 
     type: DataTypes.INTEGER,
@@ -23,9 +19,7 @@ Category.init(
     autoIncrement: true
     },
     // * `category_name`
-  
     // * String.
-  
     // * Doesn't allow null values.
     category_name:{
       type: DataTypes.STRING,
@@ -37,7 +31,7 @@ Category.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'category',
+    modelName: 'Category',
   }
 );
 
