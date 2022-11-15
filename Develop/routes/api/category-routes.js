@@ -78,7 +78,7 @@ router.post('/', async (req, res) => {
   }
 });
 //M E L A N G E
-router.put('/categorie/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   // update a category by its `id` value
   Category.update(req.body, {
     where: { 
