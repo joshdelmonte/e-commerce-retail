@@ -10,7 +10,8 @@ const ProductTag = require('./ProductTag');
 //  can have multiple products but a product can only belong to one category.
 
 Product.belongsTo(Category, {
-  foreignKey: `category_id`
+  foreignKey: `category_id`,
+  onDelete:'CASCADE'
 })
 
 Category.hasMany(Product, {
@@ -19,12 +20,14 @@ Category.hasMany(Product, {
 // * `Product` belongs to many `Tag` models, and `Tag` belongs to many `Product` models.
 //  Allow products to have multiple tags and tags to have many products by using the `ProductTag` through model.
 Product.belongsToMany(Tag, {
-  through: {attributes: [Product, Tag]}
+  through: ProductTag,
+  foreignKey: 'product_id'
   // through: ProductTag
 })
 
 Tag.belongsToMany(Product, {
-  through: {attributes: [Product, Tag]}
+  through: ProductTag,
+  foreignKey: 'tag_id'
   // through: ProductTag
 })
 // > **Hint:** Make sure you set up foreign key relationships that match the column we created in the respective models.

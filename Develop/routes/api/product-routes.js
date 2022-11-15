@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { Product } = require('../../models');
 const { Product, Category, Tag, ProductTag } = require('../models');
 
 // The `/api/products` endpoint
@@ -29,6 +30,24 @@ router.get('/:id', (req, res) => {
     console.log(err)
   })
 });
+//OR this might be better
+//GET a single Product by its id
+router.get('/:id', async (req, res) => {
+  try{
+    const Product = await Product.findByPk(req.params.id, {
+      include:[{model: Tag},
+        {model:Category}],
+    });
+    
+    if (!Product) {
+      res.status(404).json({ message: `NO PRODUCT BY THIs NAME. Please choose appropriate product id (i.e.'#123')`});
+      return;
+    }
+    res.status(200).json(Product);
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
 // GET a single card
 // router.get('/:id', async (req, res) => {
 //   try {
@@ -87,7 +106,7 @@ router.put('/:id', (req, res) => {
       id: req.params.id,
     },
   })
-    .then((produit) => {
+    .then((product) => {
       // find all associated tags from ProductTag
       return ProductTag.findAll({ where: { product_id: req.params.id } });
     })
@@ -121,12 +140,28 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+// router.delete('/:id', (req, res) => {
   // delete one product by its `id` value
-  Product.destroy({where: {id: req.params.id}})
-  .then(produit=> {
-    res.sendStatus(200)
-  })
+//   Product.destroy({where: {id: req.params.id}})
+//   .then(product=> {
+//     res.sendStatus(200)
+//   })
+// });
+// OR this might be better
+router.delete('/:id', async (req, res) => {
+  try {
+    const product = await Product.destroy({
+      where: { id: req.params.id }
+    });
+    if (!product) {
+      res.status(404).json({ message: 'No product with this id!' });
+      return;
+    }
+    res.status(200).json(product);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
+
 
 module.exports = router;
