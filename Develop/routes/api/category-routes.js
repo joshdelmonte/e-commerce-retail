@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Product, Category } = require('../../models');
 
 // The `/api/categories` endpoint
-//MELANGER
+
 // router.get('/', (req, res) => {
   // find all categories
   // be sure to include its associated Products
@@ -15,6 +15,10 @@ const { Product, Category } = require('../../models');
 //   })
 // });
 // OR
+
+// The `/api/categories` endpoint
+// find all categories
+  // be sure to include its associated Products
 router.get('/', async (req, res) => {
   try {
     const Product = await Category.findAll();
@@ -24,7 +28,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// potentially async MELANGER
 // router.get('/:id', (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
@@ -37,11 +40,13 @@ router.get('/', async (req, res) => {
 //   })
 // });
 //OR this might be better
-// GET a single traveller
+ 
+// find one category by its `id` value
+  // be sure to include its associated Products
 router.get('/:id', async (req, res) => {
   try {
     const category = await Category.findByPk(req.params.id, {
-      // JOIN with locations, using the Trip through table
+      
       include: [{ model: Product, through: Product, as: 'category_id' }]
     });
 
@@ -69,6 +74,7 @@ router.get('/:id', async (req, res) => {
 //Or this might be better
 // 
 
+// create new category
 router.post('/', async (req, res) => {
   try {
     const category = await Category.create(req.body);
@@ -78,24 +84,24 @@ router.post('/', async (req, res) => {
   }
 });
 //M E L A N G E
-router.put('/:id', (req, res) => {
+// router.put('/:id', (req, res) => {
   // update a category by its `id` value
-  Category.update(req.body, {
-    where: { 
-      id: req.params.id
-    }
-  })
-   .then(category => {
-    res.sendStatus(200).json(Category);
-  })
-   .catch(err => {
-    console.log(err)
-   })
-});
+//   Category.update(req.body, {
+//     where: { 
+//       id: req.params.id
+//     }
+//   })
+//    .then(category => {
+//     res.sendStatus(200).json(Category);
+//   })
+//    .catch(err => {
+//     console.log(err)
+//    })
+// });
 // OR this may be better
 // update category
 router.put('/:id', (req, res) => {
-  // update ca data
+  // update category data
   Category.update(req.body, {
     where: {
       id: req.params.id,
@@ -120,6 +126,8 @@ router.put('/:id', (req, res) => {
 //   })
 // });
 // or this might be better
+
+// delete a category by its `id` value
 router.delete('/:id', async (req, res) => {
   try {
     const category = await Category.destroy({
