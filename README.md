@@ -15,7 +15,7 @@ SO THAT my company can compete with other e-commerce companies
 - [Features](#features)
 ## Installation
 
-1. Go to https://github.com/joshdelmonte/EmployeeCMS.git and clone the repository.
+1. Go to https://github.com/joshdelmonte/e-commerce-retail.git and clone the repository.
     
 2. Type the following command in git bash:
 
@@ -28,14 +28,14 @@ SO THAT my company can compete with other e-commerce companies
 
 -Here is the link to the github io if you'd like to observe as well:
 
-"https://github.com/joshdelmonte/EmployeeCMS.git"
+"https://github.com/joshdelmonte/e-commerce-retail.git"
 
-
+*-NOTE: We are using Insomnia! But please feel free to use this with any front end stand in software you like!*
 ## Usage
 
-Here's a video of how to use this team profile generator:
+Here's a video of how to use this e-commerce back end module:
 
-![](https://drive.google.com/file/d/1aS4YUkmXGog8kiVcyzeJ-qFvtkUCAoBZ/view)
+<!-- ![](https://drive.google.com/file/d/1aS4YUkmXGog8kiVcyzeJ-qFvtkUCAoBZ/view) -->
 
 
 ## License
@@ -66,14 +66,17 @@ SOFTWARE.
 
 ## Features
 
--Simple Terminal queries to change and add employees as one sees fit.
+-Useful in apps such as Insomnia as a back end for e-commerce companies and retail to deal with adding and modifying inventory.
+-Displays 
 ---
 
 ## URLS
 
 -Github URL
 
-"https://github.com/joshdelmonte/EmployeeCMS.git"
+"https://github.com/joshdelmonte/e-commerce-retail.git"
 
 VIDEO:
 -"https://drive.google.com/file/d/1aS4YUkmXGog8kiVcyzeJ-qFvtkUCAoBZ/view"
+
+https://joshdelmonte.github.io/e-commerce-retail/
