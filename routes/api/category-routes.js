@@ -28,17 +28,17 @@ router.get('/', async (req, res) => {
   }
 });
 
-// router.get('/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
-//   Category.findOne({where: {id: req.params.id}, include: [Product]})
-//   .then(category=> {
-//     res.json(category)
-//   })
-//   .catch(err => {
-//     console.log(err)
-//   })
-// });
+  Category.findOne({where: {id: req.params.id}, include: [Product]})
+  .then(category=> {
+    res.json(category)
+  })
+  .catch(err => {
+    console.log(err)
+  })
+});
 //OR this might be better
  
 // find one category by its `id` value

@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const { Product } = require('../../models');
-const { Product, Category, Tag, ProductTag } = require('../models');
+const { Category, Tag, ProductTag, Product } = require('../../models');
 
 // The `/api/products` endpoint
 
@@ -30,6 +29,7 @@ router.get('/:id', (req, res) => {
     console.log(err)
   })
 });
+
 //OR this might be better
 //GET a single Product by its id
 router.get('/:id', async (req, res) => {
